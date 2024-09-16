@@ -511,6 +511,10 @@ def carregar_analise_2_valores(uploaded_file, novo_caminho, escolha, quantidade_
 
 def main():
     #Configurações da pagina
+    # Configurações da página
+    st.set_page_config(layout="wide")
+
+    # Configurações da página
     st.markdown(
         """
         <style>
@@ -520,33 +524,38 @@ def main():
             width: 100%;
             height: 100%;
         }
-        .reportview-container {
-            margin: 10px;
-            flex: 1;
+        .reportview-container, .main {
+            margin: 0;
+            padding: 0;
+            width: 100%;
         }
         .main .block-container {
-            width: calc(100% - 15px);  /* Subtrai as margens */
             padding: 0;
-            margin: -90px;
+            margin: 0;
         }
-
-        /* Estilos responsivos para diferentes tamanhos de tela */
-        @media (max-width: 768px) {
-            .reportview-container {
-                margin: 10px; /* Menor margem para telas menores */
-            }
-            .main .block-container {
-                width: calc(100% - 50px); /* Ajusta a largura para telas menores */
-            }
+    
+        /* Adicionando margem ao título */
+        .title-container {
+            text-align: center;
+            background-color: #d1d1e4;
+            border-radius: 20px;
+            padding: 10px;
+            margin: 20px;  /* Margem de 20px ao redor do título */
+        }
+    
+        .title-text {
+            color: black;
+            font-size: 70px;
+            font-weight: bold;
         }
         </style>
-        <div style="text-align: center; background-color:#d1d1e4; border-radius: 20px; padding: 10px;">
-            <span style="color: black; font-size: 70px; font-weight: bold;">Projeto Canhadas</span>
+        <div class="title-container">
+            <span class="title-text">Projeto Canhadas</span>
         </div>
         """,
         unsafe_allow_html=True
     )
-
+    
     # Escondendo o menu, rodapé e cabeçalho
     hide_menu_style = """
         <style>
@@ -556,6 +565,8 @@ def main():
         </style>
         """
     st.markdown(hide_menu_style, unsafe_allow_html=True)
+
+    
 
     #Separar pagina em duas Colunas
     left_column, right_column = st.columns(2,vertical_alignment="top")
